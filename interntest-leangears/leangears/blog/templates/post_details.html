@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} {{ post.title }}{% endblock %}
+{% block container %}
+
+             <div class="container">
+                <div class="post-detail">
+                    <div class="post-image">
+                        <img src="{% static 'img/card.jpg' %}" width="70%">
+                    </div>
+                    <div class="post-Description">
+                        <h2>{{ post.title}}</h2><h5>by {{ post.owner}}</h5>
+                        <p>{{ post.content}}</p>
+                        <p>{{post.created_at}}</p>
+                       <a href="{% url 'post_update' post.id %}"> <button class="btn btn-success" type="submit">Edit</button></a>
+                       <a href="{% url 'post_delete' post.id %}"><button class="btn btn-danger" type="submit">Delete</button></a>
+                       
+                    </div>
+                </div>
+               
+            </div>
+{% endblock %}
+
+

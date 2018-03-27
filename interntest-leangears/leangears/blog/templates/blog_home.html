@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block container %}
+
+<div class="header_container jumbotron">
+	<h3 class="blog-title">Lean Blog</h3>
+	<h6>Welcome to Lean Blog her you can write your own views </h6>
+</div>
+<div class="container">
+    <div class="row">
+	  {% for post in posts %}
+      <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+			<div class="card">
+			  <div class="image">
+				<img src="{% static 'img/card.jpg' %}" width="100%">
+			  </div>
+			  <div class="text">
+				<a href="{% url 'post_details' post.id %}"><div class="fab">&#43;</div></a>
+				<a href="{% url 'post_details' post.id %}">{{ post.title}}</a>
+				<p>{{ post.content|truncatewords:15}}</p>
+				  <p><strong>Posted By {{ post.owner}}..</strong></p>
+			  </div>
+			</div>
+      </div>
+	{% endfor %}
+	<hr>
+    </div>
+  </div>
+{% endblock %}
+
